@@ -35,11 +35,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
-                            <div>
-                                <c:out value="${question.text}"/>
-                            </div>
                         </div>
                         <hr>
                     </c:forEach>

@@ -12,6 +12,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Collection;
 
 
 @WebServlet(name = "FrontController", urlPatterns = "/do/*")
@@ -59,12 +60,14 @@ public class FrontController extends HttpServlet {
                 case "/editQuestion":
                     editQuestion(request, response);
                     break;
-                case "/":
                 case "/questions":
                     questions(request, response);
                     break;
+                case "":
+                    response.sendRedirect("/do/questions");
+                    break;
                 default:
-                    response.sendError(404);
+                    response.sendRedirect("./questions");
                     break;
             }
         } catch (RuntimeException ex) {
@@ -73,8 +76,16 @@ public class FrontController extends HttpServlet {
     }
 
     private void questions(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String searchText = request.getParameter("searchText");
+        if (searchText == null) {
+            request.setAttribute("questions", questionService.getAllQuestions());
+        } else {
+            Collection<Question> questions = questionService.searchByText(searchText);
+            request.setAttribute("questions", questions);
+        }
         request.getRequestDispatcher("/WEB-INF/jsp/questions.jsp").forward(request, response);
     }
+
 
     private void error(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/html/error.html").forward(request, response);

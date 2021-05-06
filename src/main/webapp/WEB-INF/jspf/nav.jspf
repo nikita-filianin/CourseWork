@@ -1,4 +1,9 @@
-<ul class="nav nav-pills">
+<style>
+    body {
+        background-image: url("/01.jpg");
+    }
+</style>
+<ul class="nav nav-pills">  
     <li class="nav-item col-md-1">
         <a class="nav-link" href="./questions">All Questions</a>
     </li>

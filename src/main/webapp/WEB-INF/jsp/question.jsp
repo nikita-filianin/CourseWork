@@ -55,35 +55,37 @@
 
 
                 <c:forEach var="answer" items="${requestScope.answers}">
-                    <div class="bg-white p-2">
-                        <div class="d-flex flex-row user-info">
-                            <div class="d-flex flex-column justify-content-start ml-2">
+                <div class="bg-white p-2">
+                    <div class="d-flex flex-row user-info">
+                        <div class="d-flex flex-column justify-content-start ml-2">
                                 <span class="d-block font-weight-bold name"><c:out
                                         value="${answer.user.login}"/></span>
-                            </div>
-                        </div>
-                        <div class="mt-2">
-                            <p class="answer-text"><c:out value="${answer.text}"/></p>
+                            <span class="date text-black-50"><c:out value="${answer.instant}"/></span>
                         </div>
                     </div>
-                </c:forEach>
-
-                <c:if test="${!empty sessionScope.user}">
-                    <div class="bg-light p-2">
-                        <form action="answer" method="post">
-                            <div class="d-flex flex-row align-items-start">
-                                <textarea name="text" class="form-control ml-1 shadow-none textarea"></textarea>
-                            </div>
-                            <input type="hidden" name="id" value="${question.id}">
-                            <div class="mt-2 text-right">
-                                <button class="btn btn-primary btn-sm shadow-none" type="submit">Reply</button>
-                            </div>
-                        </form>
-                    </div>
-                </c:if>
+                </div>
+                <div class="mt-2">
+                    <p class="answer-text"><c:out value="${answer.text}"/></p>
+                </div>
             </div>
+            </c:forEach>
+
+            <c:if test="${!empty sessionScope.user}">
+                <div class="bg-light p-2">
+                    <form action="answer" method="post">
+                        <div class="d-flex flex-row align-items-start">
+                            <textarea name="text" class="form-control ml-1 shadow-none textarea"></textarea>
+                        </div>
+                        <input type="hidden" name="id" value="${question.id}">
+                        <div class="mt-2 text-right">
+                            <button class="btn btn-primary btn-sm shadow-none" type="submit">Reply</button>
+                        </div>
+                    </form>
+                </div>
+            </c:if>
         </div>
     </div>
+</div>
 </div>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

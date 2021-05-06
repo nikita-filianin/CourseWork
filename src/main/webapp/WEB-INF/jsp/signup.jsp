@@ -3,9 +3,8 @@
 <html>
 <head>
     <title>Sign Up</title>
-    <link type="text/css" rel="stylesheet" href="../../CSS/styles.css"/>
+    <link type="text/css" rel="stylesheet" href="../../css/styles.css"/>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-
 
 </head>
 <body>
@@ -17,7 +16,7 @@
 
         <!-- Icon -->
         <div class=" ">
-            <img src="/user.png" id="icon" height="90" alt="User Icon"/>
+            <img src="/user1.png" id="icon" height="80" width="80" alt="User Icon"/>
         </div>
 
         <!-- Login Form -->
@@ -38,7 +37,9 @@
         </form>
     </div>
 </div>
+
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </body>
 </html>

@@ -15,7 +15,7 @@
         <!-- Tabs Titles -->
         <!-- Icon -->
         <div>
-            <img src="/user.png" id="icon" height="90" alt="User Icon"/>
+            <img src="/user1.png" id="icon" height="80" width="120" alt="User Icon"/>
         </div>
 
         <!-- Log In Form -->
@@ -46,5 +46,6 @@
 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </body>
 </html>
