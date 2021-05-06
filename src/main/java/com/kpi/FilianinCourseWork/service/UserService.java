@@ -1,10 +1,8 @@
 package com.kpi.FilianinCourseWork.service;
 
 import com.kpi.FilianinCourseWork.dao.DaoFactory;
-import com.kpi.FilianinCourseWork.exceptions.FailedPasswordConfirmationException;
-import com.kpi.FilianinCourseWork.exceptions.InvalidPasswordException;
-import com.kpi.FilianinCourseWork.exceptions.NonexistentUserException;
-import com.kpi.FilianinCourseWork.exceptions.ExistentUserException;
+import com.kpi.FilianinCourseWork.exceptions.IncorrectPasswordException;
+import com.kpi.FilianinCourseWork.exceptions.IncorrectLoginException;
 import com.kpi.FilianinCourseWork.model.User;
 
 import java.nio.charset.StandardCharsets;
@@ -33,7 +31,7 @@ public class UserService {
     }
 
     public User logIn(String login, String password)
-            throws NonexistentUserException, InvalidPasswordException, NoSuchAlgorithmException, NullPointerException {
+            throws IncorrectLoginException, IncorrectPasswordException, NoSuchAlgorithmException, NullPointerException {
         if (login == null) {
             throw new NullPointerException("Login field is empty!");
         }
@@ -43,27 +41,26 @@ public class UserService {
         }
         User user = daoFactory.getUserDao().getUserByLogin(login);
         if (user == null) {
-            throw new NonexistentUserException("User with login '" + login + "'not found!");
+            throw new IncorrectLoginException("User with login '" + login + "'not found!");
         }
 
         if (!user.getPasswordHash().equals(passwordHasher(password))) {
-            throw new InvalidPasswordException("Invalid Password!");
+            throw new IncorrectPasswordException("Invalid Password!");
         }
         return user;
     }
 
     public void signUp(String login, String password, String confirmedPassword)
-            throws FailedPasswordConfirmationException, ExistentUserException, NoSuchAlgorithmException {
+            throws IncorrectPasswordException, IncorrectLoginException, NoSuchAlgorithmException {
 
         if (daoFactory.getUserDao().getUserByLogin(login) != null) {
-            throw new ExistentUserException("User with login '" + login + "' already exists!");
+            throw new IncorrectLoginException("User with the login '" + login + "' already exists!");
         }
 
         if (!password.equals(confirmedPassword)) {
-            throw new FailedPasswordConfirmationException("Passwords don't match!");
+            throw new IncorrectPasswordException("Passwords are different!");
         }
 
         daoFactory.getUserDao().addUser(login, passwordHasher(password));
     }
 }
-
