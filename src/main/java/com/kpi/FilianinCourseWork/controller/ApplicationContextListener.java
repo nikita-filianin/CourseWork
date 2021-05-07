@@ -19,23 +19,15 @@ public class ApplicationContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         Database database = new Database();
-        Question question = new Question(1, "How to solve this equation?");
+        Question question = new Question(1, "How to solve 2 + 2 equation?");
         database.getQuestions().put(1, question);
-        database.getQuestions().put(2, new Question(2, "How to unpark my CPU cores?"));
-        database.getQuestions().put(3, new Question(3, "How to create HelloWorld on Assembly?"));
+        database.getQuestions().put(2, new Question(2, "How to unpark CPU cores?"));
+        database.getQuestions().put(3, new Question(3, "How to create HelloWorld on Java?"));
 
         DaoFactoryImpl daoFactory = database.getDaoFactory();
 
-            UserService userService = new UserService(daoFactory);
-            QuestionService questionService = new QuestionService(daoFactory);
-
-        try {
-            User user = new User(1, "", userService.passwordHasher(""));
-            database.getUsers().put(1, user);
-        } catch (
-                NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
+        UserService userService = new UserService(daoFactory);
+        QuestionService questionService = new QuestionService(daoFactory);
 
         sce.getServletContext().setAttribute("userService", userService);
         sce.getServletContext().setAttribute("questionService", questionService);

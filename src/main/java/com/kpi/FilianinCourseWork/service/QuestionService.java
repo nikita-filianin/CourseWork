@@ -42,8 +42,8 @@ public class QuestionService {
         daoFactory.getAnswerDao().addAnswer(question, user, text);
     }
 
-    public void editQuestion(Question question, String text) {
-        daoFactory.getQuestionDao().editQuestion(new Question(question.getId(), text), question.getId());
+    public void updateQuestion(Question question, String text) {
+        daoFactory.getQuestionDao().updateQuestion(new Question(question.getId(), text), question.getId());
     }
 
     private static boolean containsAllWords(Question question, String[] words) {

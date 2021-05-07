@@ -1,6 +1,6 @@
 <style>
     body {
-        background-image: url("/01.jpg");
+        background-image: url("/images/01.jpg");
     }
 </style>
 <ul class="nav nav-pills">  

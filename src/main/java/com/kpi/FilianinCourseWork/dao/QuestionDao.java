@@ -14,6 +14,6 @@ public interface QuestionDao {
 
     void deleteQuestion(Question question);
 
-    void editQuestion(Question question, Integer id);
+    void updateQuestion(Question question, Integer id);
 }
 

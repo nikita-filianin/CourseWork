@@ -60,15 +60,14 @@ public class FrontController extends HttpServlet {
                 case "/editQuestion":
                     editQuestion(request, response);
                     break;
+                case "/":
                 case "/questions":
                     questions(request, response);
                     break;
-                case "":
-                    response.sendRedirect("/do/questions");
-                    break;
                 default:
-                    response.sendRedirect("./questions");
+                    response.sendError(404);
                     break;
+
             }
         } catch (RuntimeException ex) {
             error(request, response);
@@ -134,18 +133,18 @@ public class FrontController extends HttpServlet {
         try {
             userService.signUp(login, pass1, pass2);
         } catch (IncorrectPasswordException e) {
-            request.setAttribute("errorMsg", "Passwords are different!");
+            request.setAttribute("errorMessage", "Passwords are different!");
             request.getRequestDispatcher("/WEB-INF/jsp/signup.jsp").forward(request, response);
             return;
         } catch (IncorrectLoginException e) {
-            request.setAttribute("errorMsg", "Login is already taken!");
+            request.setAttribute("errorMessage", "Login is already taken!");
             request.getRequestDispatcher("/WEB-INF/jsp/signup.jsp").forward(request, response);
             return;
         } catch (NoSuchAlgorithmException e) {
             error(request, response);
             return;
         }
-        request.setAttribute("success", "You have been registered! Now you can log in!");
+        request.setAttribute("success", "Account created! Just log in!");
         request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
     }
 
@@ -167,36 +166,38 @@ public class FrontController extends HttpServlet {
             }
 
             String text = request.getParameter("text");
-            questionService.editQuestion(question, text);
+            if (text == null || text == "") {
+                request.setAttribute("question", question);
+                request.getRequestDispatcher("/WEB-INF/jsp/editQuestion.jsp").forward(request, response);
+                return;
+            }
+            questionService.updateQuestion(question, text);
         }
         response.sendRedirect("questions");
-
     }
 
 
     private void addQuestion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String title = request.getParameter("title");
+        String text = request.getParameter("text");
         User user = (User) request.getSession().getAttribute("user");
         if (user != null) {
-            if (title == null || title == "") {
+            if (text == null || text == "") {
                 request.getRequestDispatcher("/WEB-INF/jsp/addQuestion.jsp").forward(request, response);
             } else {
-                String text = request.getParameter("text");
-                if (text == null) {
-                    text = "";
-                }
                 questionService.addQuestion(text);
                 response.sendRedirect("questions");
             }
+
         } else {
             response.sendRedirect("questions");
         }
     }
 
+
     private void deleteQuestion(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String idParam = request.getParameter("id");
         User user = (User) request.getSession().getAttribute("user");
-        if (idParam == null || user == null ) {
+        if (idParam == null || user == null) {
             response.sendRedirect("questions");
             return;
         }

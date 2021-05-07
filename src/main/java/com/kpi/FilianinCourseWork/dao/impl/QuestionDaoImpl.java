@@ -11,7 +11,7 @@ public class QuestionDaoImpl implements QuestionDao {
 
     public QuestionDaoImpl(Database database) {
         this.database = database;
-        this.id = 0;
+        this.id = 5;
     }
 
     @Override
@@ -36,7 +36,7 @@ public class QuestionDaoImpl implements QuestionDao {
     }
 
     @Override
-    public void editQuestion(Question question, Integer id) {
+    public void updateQuestion(Question question, Integer id) {
         database.getQuestions().put(id, question);
     }
 }

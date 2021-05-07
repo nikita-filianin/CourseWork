@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title>Sign Up</title>
@@ -16,18 +16,18 @@
 
         <!-- Icon -->
         <div class=" ">
-            <img src="/user1.png" id="icon" height="80" width="80" alt="User Icon"/>
+            <img src="/images/user.png" id="icon" height="100" width="100" alt="User Icon"/>
         </div>
 
         <!-- Login Form -->
         <form action="signup" method="post">
             <input type="text" id="login" name="login" placeholder="login">
-            <input type="password" name="password1" placeholder="password">
-            <input type="password" name="password2" placeholder="repeat password">
+            <input type="password" name="pass1" placeholder="password">
+            <input type="password" name="pass2" placeholder="repeat password">
             <div>
-                <c:if test="${!empty errorMsg}">
+                <c:if test="${!empty errorMessage}">
                     <div style="color: red">
-                        <c:out value="${errorMsg}"/>
+                        <c:out value="${errorMessage}"/>
                     </div>
                 </c:if>
             </div>
