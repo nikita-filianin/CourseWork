@@ -5,6 +5,8 @@
     <title>Sign Up</title>
     <link type="text/css" rel="stylesheet" href="../../css/styles.css"/>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -12,14 +14,11 @@
 <%@ include file="../jspf/nav.jspf" %>
 <div class="wrapper ">
     <div id="formContent">
-        <!-- Tabs Titles -->
 
-        <!-- Icon -->
         <div class=" ">
-            <img src="/images/user.png" id="icon" height="100" width="100" alt="User Icon"/>
+            <img src="/images/user.png" id="icon" height="100" alt="User Icon"/>
         </div>
 
-        <!-- Login Form -->
         <form action="signup" method="post">
             <input type="text" id="login" name="login" placeholder="login">
             <input type="password" name="pass1" placeholder="password">
@@ -37,9 +36,5 @@
         </form>
     </div>
 </div>
-
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 </body>
 </html>

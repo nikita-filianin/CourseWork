@@ -1,5 +1,6 @@
 package com.kpi.FilianinCourseWork.model;
 
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
@@ -8,11 +9,16 @@ public class Question {
     private Integer id;
     private String text;
     private Collection<Answer> answers;
+    private Integer userId;
+    private Boolean isSolved;
 
     public Question(Integer id, String text) {
         this.id = id;
         this.text = text;
         this.answers = new ArrayList<>();
+        this.isSolved = false;
+//        this.userId = userId;
+
     }
 
     public Integer getId() {
@@ -33,6 +39,14 @@ public class Question {
 
     public void addAnswer(Answer answer) {
         answers.add(answer);
+    }
+
+    public Boolean getSolved() {
+        return isSolved;
+    }
+
+    public void setSolved(Boolean solved) {
+        isSolved = solved;
     }
 
     @Override

@@ -17,7 +17,7 @@
                 value="${question.text}"/></textarea>
     </div>
     <div class="form-group">
-        <input type="submit" value="Edit question">
+        <input type="submit" value="Save">
     </div>
 </form>
 </body>

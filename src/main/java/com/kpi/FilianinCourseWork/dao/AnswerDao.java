@@ -6,7 +6,7 @@ import com.kpi.FilianinCourseWork.model.User;
 
 import java.util.Collection;
 
-public interface AnswerDao  {
+public interface AnswerDao {
 
     Collection<Answer> findByQuestionId(Integer id);
 

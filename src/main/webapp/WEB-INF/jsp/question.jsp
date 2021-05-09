@@ -19,24 +19,32 @@
                         <div class="row">
                             <div class="col-sm-9">
                                 <c:if test="${!empty user}">
-                                    <form action="deleteQuestion" method="post" style="display: flex; align-content: flex-start">
+                                    <form action="deleteQuestion" method="post"
+                                          style="display: flex; align-content: flex-start">
                                         <input type="hidden" name="id" value="${question.id}">
                                         <input type="submit" style="color: red" value="Delete question">
                                     </form>
 
-                                    <form action="editQuestion" method="post" style="display: flex; align-content: flex-start">
+                                    <form action="editQuestion" method="post"
+                                          style="display: flex; align-content: flex-start">
                                         <input type="hidden" name="id" value="${question.id}">
                                         <input type="submit" style="color: cornflowerblue" value="Edit question">
                                     </form>
+
+                                    <c:if test="${!question.solved}">
+                                        <form action="answerStatus" method="post"
+                                              style="display: flex; align-content: flex-start">
+                                            <input type="hidden" name="id" value="${question.id}">
+                                            <input type="submit" style="color: cornflowerblue" value="Mark as solved">
+                                        </form>
+                                    </c:if>
+
+
                                 </c:if>
+                                <h3 class="float-left"><c:out value="${question.text}"/></h3>
 
                             </div>
                         </div>
-                    </div>
-
-
-                    <div>
-                        <c:out value="${question.text}"/>
                     </div>
                 </div>
                 <hr>

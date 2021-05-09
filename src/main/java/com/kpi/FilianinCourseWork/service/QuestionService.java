@@ -46,6 +46,11 @@ public class QuestionService {
         daoFactory.getQuestionDao().updateQuestion(new Question(question.getId(), text), question.getId());
     }
 
+    public void answerStatus(Question question) {
+        question.setSolved(true);
+        daoFactory.getQuestionDao().updateQuestion(question, question.getId());
+    }
+
     private static boolean containsAllWords(Question question, String[] words) {
         String string = question.getText();
         string = string.toLowerCase();

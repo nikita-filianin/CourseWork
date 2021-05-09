@@ -60,6 +60,9 @@ public class FrontController extends HttpServlet {
                 case "/editQuestion":
                     editQuestion(request, response);
                     break;
+                case "/answerStatus":
+                    answerStatus(request, response);
+                    break;
                 case "/":
                 case "/questions":
                     questions(request, response);
@@ -266,6 +269,13 @@ public class FrontController extends HttpServlet {
         request.setAttribute("question", question);
         request.setAttribute("answers", question.getAnswers());
         request.getRequestDispatcher("/WEB-INF/jsp/question.jsp").forward(request, response);
+    }
+
+    private void answerStatus(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Integer id = Integer.parseInt(request.getParameter("id"));
+        Question question = questionService.getQuestionById(id);
+        questionService.answerStatus(question);
+        response.sendRedirect("questions");
     }
 
 

@@ -14,7 +14,7 @@
 <nav class="navbar justify-content-center navbar-light bg-light">
 
     <form class="float-center form-inline" method="post">
-        <input name="searchText" class="form-control mr-md-2" type="search" placeholder="Search"
+        <input name="searchText" class="form-control mr-md-2" type="search" placeholder="type here..."
                aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
@@ -38,8 +38,17 @@
                         <div class="text-center">
                             <div class="row">
                                 <div class="col-sm-9">
+                                    <c:if test="${!question.solved}">
                                     <a href="question?id=${question.id}"><h3 class="float-left"><c:out
                                             value="${question.text}"/></h3></a>
+                                    </c:if>
+
+                                    <c:if test="${question.solved}">
+                                        <a href="question?id=${question.id}" style="color: green"><h3 class="float-left"><c:out
+                                                value="${question.text}"/></h3></a>
+                                        <span style="color: green"><b>Solved</b></span>
+                                    </c:if>
+
                                 </div>
                             </div>
                         </div>
