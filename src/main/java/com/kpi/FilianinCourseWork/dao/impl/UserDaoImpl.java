@@ -15,8 +15,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User getUserById(Integer id)
-    {
+    public User getUserById(Integer id) {
         return database.getUsers().get(id);
     }
 

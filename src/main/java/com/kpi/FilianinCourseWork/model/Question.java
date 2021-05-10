@@ -12,12 +12,12 @@ public class Question {
     private Integer userId;
     private Boolean isSolved;
 
-    public Question(Integer id, String text) {
+    public Question(Integer id, String text, Integer userId) {
         this.id = id;
         this.text = text;
         this.answers = new ArrayList<>();
         this.isSolved = false;
-//        this.userId = userId;
+        this.userId = userId;
 
     }
 
@@ -47,6 +47,14 @@ public class Question {
 
     public void setSolved(Boolean solved) {
         isSolved = solved;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     @Override

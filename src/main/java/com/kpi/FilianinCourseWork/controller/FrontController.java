@@ -187,7 +187,7 @@ public class FrontController extends HttpServlet {
             if (text == null || text == "") {
                 request.getRequestDispatcher("/WEB-INF/jsp/addQuestion.jsp").forward(request, response);
             } else {
-                questionService.addQuestion(text);
+                questionService.addQuestion(text, user.getId());
                 response.sendRedirect("questions");
             }
 

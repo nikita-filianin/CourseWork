@@ -15,8 +15,8 @@ public class QuestionService {
         this.daoFactory = daoFactory;
     }
 
-    public void addQuestion(String text) {
-        daoFactory.getQuestionDao().addQuestion(text);
+    public void addQuestion(String text, Integer userId) {
+        daoFactory.getQuestionDao().addQuestion(text, userId);
     }
 
     public void deleteQuestion(Question question) {
@@ -43,7 +43,7 @@ public class QuestionService {
     }
 
     public void updateQuestion(Question question, String text) {
-        daoFactory.getQuestionDao().updateQuestion(new Question(question.getId(), text), question.getId());
+        daoFactory.getQuestionDao().updateQuestion(new Question(question.getId(), text, question.getUserId()), question.getId());
     }
 
     public void answerStatus(Question question) {

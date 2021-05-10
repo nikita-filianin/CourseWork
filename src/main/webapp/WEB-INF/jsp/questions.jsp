@@ -47,6 +47,7 @@
                                         <a href="question?id=${question.id}" style="color: green"><h3 class="float-left"><c:out
                                                 value="${question.text}"/></h3></a>
                                         <span style="color: green"><b>Solved</b></span>
+
                                     </c:if>
 
                                 </div>

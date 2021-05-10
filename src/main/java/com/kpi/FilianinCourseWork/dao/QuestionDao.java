@@ -10,7 +10,7 @@ public interface QuestionDao {
 
     Question getQuestionById(Integer id);
 
-    void addQuestion(String text);
+    void addQuestion(String text, Integer userId);
 
     void deleteQuestion(Question question);
 

@@ -18,7 +18,7 @@
                     <div class="text-center">
                         <div class="row">
                             <div class="col-sm-9">
-                                <c:if test="${!empty user}">
+                                <c:if test="${!empty user && question.userId == user.id}">
                                     <form action="deleteQuestion" method="post"
                                           style="display: flex; align-content: flex-start">
                                         <input type="hidden" name="id" value="${question.id}">

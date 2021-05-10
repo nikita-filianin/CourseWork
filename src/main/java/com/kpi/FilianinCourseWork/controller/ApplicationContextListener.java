@@ -19,12 +19,6 @@ public class ApplicationContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         Database database = new Database();
-        Question question1 = new Question(1, "Kak sdat' kursa4b?");
-        database.getQuestions().put(1, question1);
-        Question question2 = new Question(2, "Kak sdat' ekzamen?");
-        database.getQuestions().put(2, question2);
-        Question question3 = new Question(3, "Does finally always work?");
-        database.getQuestions().put(3, question3);
 
 
         DaoFactoryImpl daoFactory = database.getDaoFactory();
@@ -33,17 +27,30 @@ public class ApplicationContextListener implements ServletContextListener {
         QuestionService questionService = new QuestionService(daoFactory);
 
         try {
-            User tom =  new User(1, "mitin", userService.passwordHasher("1221"));
+            User tom = new User(1, "tom", userService.passwordHasher("111"));
             database.getUsers().put(1, tom);
-            daoFactory.getAnswerDao().addAnswer(question1, tom, "Da tak... -100/100");
+            Question question1 = new Question(1, "How to install Java?", tom.getId());
+            database.getQuestions().put(1, question1);
+            daoFactory.getAnswerDao().addAnswer(question1, tom, "To install Java, you first need to download the " +
+                    "installer program from Oracle. Click the " + "\"Free Java Download\" button. " +
+                    "You are then prompted to read and agree with the end " +
+                    "user license agreement.");
 
-            User john =  new User(2, "bukasov", userService.passwordHasher("1331"));
+            User john = new User(2, "john", userService.passwordHasher("222"));
             database.getUsers().put(2, john);
-            daoFactory.getAnswerDao().addAnswer(question2, john, "Da tak... -50/50");
+            Question question2 = new Question(2, "How to gitignore .idea files?", john.getId());
+            database.getQuestions().put(2, question2);
+            daoFactory.getAnswerDao().addAnswer(question2, john, "Go to File > Settings > Version Control > " +
+                    "Ignored Files. Then add your folder or file to git ignore.");
 
-            User will =  new User(3, "vovk", userService.passwordHasher("1441"));
+            User will = new User(3, "will", userService.passwordHasher("333"));
             database.getUsers().put(3, will);
-            daoFactory.getAnswerDao().addAnswer(question3, will, "na peresdachy!!!");
+            Question question3 = new Question(3, "How to create a branch on github?", will.getId());
+            database.getQuestions().put(3, question3);
+            daoFactory.getAnswerDao().addAnswer(question3, will, "On GitHub, navigate to the main page of " +
+                    "the repository. Click the branch selector menu. Type a unique name for your new branch, " +
+                    "then select Create branch.");
+
 
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();

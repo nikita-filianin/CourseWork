@@ -44,9 +44,9 @@ public class Answer {
     }
 
     public String getInstant() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime( FormatStyle.SHORT )
-                .withLocale( Locale.UK )
-                .withZone( ZoneId.systemDefault() );
+        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT)
+                .withLocale(Locale.UK)
+                .withZone(ZoneId.systemDefault());
         return formatter.format(instant);
     }
 

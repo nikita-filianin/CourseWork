@@ -1,6 +1,5 @@
 package com.kpi.FilianinCourseWork.dao.impl;
 
-import com.kpi.FilianinCourseWork.dao.DaoFactory;
 import com.kpi.FilianinCourseWork.model.Answer;
 import com.kpi.FilianinCourseWork.model.Question;
 import com.kpi.FilianinCourseWork.model.User;

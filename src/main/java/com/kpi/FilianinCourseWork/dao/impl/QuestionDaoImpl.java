@@ -25,8 +25,8 @@ public class QuestionDaoImpl implements QuestionDao {
     }
 
     @Override
-    public void addQuestion(String text) {
-        Question question = new Question(id, text);
+    public void addQuestion(String text, Integer userId) {
+        Question question = new Question(id, text, userId);
         database.getQuestions().put(id++, question);
     }
 
