@@ -1,5 +1,5 @@
 html {
-    background-color: #E84300;
+    background-color: #28608F;
 }
 
 body {
@@ -58,7 +58,7 @@ h2 {
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset] {
-    background-color: #E84300;
+    background-color: #28608F;
     border: none;
     color: white;
     padding: 15px 80px;
@@ -80,7 +80,7 @@ input[type=button], input[type=submit], input[type=reset] {
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
-    background-color: red;
+    background-color: darkslateblue;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active {
@@ -114,7 +114,7 @@ input[type=text], input[type=password] {
 
 input[type=text]:focus, input[type=password]:focus {
     background-color: #fff;
-    border-bottom: 2px solid #E84300;
+    border-bottom: 2px solid #28608F;
 }
 
 input[type=text]::placeholder, input[type=password]::placeholder {

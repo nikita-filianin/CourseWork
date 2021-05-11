@@ -9,7 +9,7 @@
 </head>
 <body>
 <%@ include file="../jspf/nav.jspf" %>
-<div class="container">
+<div class="container" style="margin-top: 30px">
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-lg-12">
@@ -93,6 +93,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>

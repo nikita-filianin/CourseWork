@@ -10,25 +10,14 @@
 <body>
 <%@ include file="../jspf/nav.jspf" %>
 
-
-<nav class="navbar justify-content-center navbar-light bg-light">
-
-    <form class="float-center form-inline" method="post">
-        <input name="searchText" class="form-control mr-md-2" type="search" placeholder="type here..."
-               aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-
-</nav>
-<br>
 <c:if test="${!empty user}">
-    <nav class="navbar justify-content-center">
+    <nav class="navbar justify-content-center " style="margin-top: 20px">
         <form action="addQuestion" method="post">
             <input type="submit" value="Add new question">
         </form>
     </nav>
 </c:if>
-<div class="container">
+<div class="container" style="margin-top: 30px">
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-lg-12">
